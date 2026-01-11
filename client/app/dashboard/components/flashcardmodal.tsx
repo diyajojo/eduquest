@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, RotateCw ,HelpCircle,BookOpen} from 'lucide-react';
+import { ChevronLeft, ChevronRight, RotateCw, HelpCircle, BookOpen } from 'lucide-react';
 
-interface Flashcard 
-{
+interface Flashcard {
   id: string;
   question_text: string;
   answer_text: string;
@@ -42,8 +41,8 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
       </h3>
       <p className="text-gray-600 mb-4">
         This module looks too simple for you 😔!
-        </p>
-        <p className="text-gray-600 mb-4">It might be your lucky day - less to memorize!</p>
+      </p>
+      <p className="text-gray-600 mb-4">It might be your lucky day - less to memorize!</p>
       <div className="flex items-center justify-center gap-2 text-blue-600">
         <BookOpen className="h-5 w-5" />
         <span className="text-sm font-medium">Focus on understanding the concepts!</span>
@@ -76,7 +75,7 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+      className="fixed inset-0 bg-black/50 backdrop-blur-[2px] flex items-center justify-center p-4 z-50"
       onClick={handleBackdropClick}
     >
       <div className="bg-white rounded-2xl p-8 w-full max-w-3xl shadow-2xl" onClick={e => e.stopPropagation()}>
@@ -106,7 +105,7 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
                 {/* Front of Card (Question) */}
                 <div
                   className="absolute inset-0 bg-white rounded-2xl p-10 flex flex-col items-center justify-center [backface-visibility:hidden]  border-4"
-                  
+
                 >
                   <div
                     className="absolute top-6 left-6 px-5 py-2 rounded-full"
@@ -129,7 +128,7 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
                 {/* Back of Card (Answer) */}
                 <div
                   className="absolute inset-0 bg-white rounded-2xl p-10 flex flex-col items-center justify-center [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-2xl border-4"
-             
+
                 >
                   <div
                     className="absolute top-6 left-6 px-5 py-2 rounded-full"
@@ -177,7 +176,7 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
             </div>
           </div>
         ) : (
-          <EmptyCardState/>
+          <EmptyCardState />
         )}
       </div>
     </div>

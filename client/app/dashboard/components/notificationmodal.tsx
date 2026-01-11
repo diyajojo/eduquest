@@ -31,7 +31,7 @@ const NotificationsModal: React.FC<NotificationsModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-[2px] p-4">
       <div className="bg-white rounded-xl shadow-2xl w-[500px] max-h-[600px] overflow-hidden">
         {/* Header */}
         <div className="bg-[rgba(255,140,90,1)] text-white p-6 flex justify-between items-center">

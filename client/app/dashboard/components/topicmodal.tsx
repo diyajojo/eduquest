@@ -44,7 +44,7 @@ const ModuleTopicsModal: React.FC<ModuleTopicsModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+      className="fixed inset-0 bg-black/50 backdrop-blur-[2px] flex items-center justify-center p-4 z-50"
       onClick={onClose}
     >
       <div

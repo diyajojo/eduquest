@@ -47,7 +47,7 @@ const QuestionAnswerModal: React.FC<QuestionAnswerModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+      className="fixed inset-0 bg-black/50 backdrop-blur-[2px] flex items-center justify-center p-4 z-50"
       onClick={onClose}
     >
       <div
@@ -75,11 +75,10 @@ const QuestionAnswerModal: React.FC<QuestionAnswerModalProps> = ({
                 questions.map((question) => (
                   <button
                     key={question.id}
-                    className={`w-full p-4 text-left rounded-lg transition-all transform hover:scale-102 hover:shadow-md flex justify-between items-center ${
-                      selectedQuestion?.id === question.id
+                    className={`w-full p-4 text-left rounded-lg transition-all transform hover:scale-102 hover:shadow-md flex justify-between items-center ${selectedQuestion?.id === question.id
                         ? 'bg-blue-100 border-2 border-blue-300'
                         : 'bg-white border border-gray-200 hover:bg-blue-50'
-                    }`}
+                      }`}
                     onClick={() => setSelectedQuestion(question)}
                   >
                     <div className="flex-1 pr-4">

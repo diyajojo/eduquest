@@ -247,7 +247,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
       console.error('Save error:', err);
     }
   };
-  
+
   // Render methods remain the same as in the original implementation
   const renderScheduleContent = (data: ScheduleResponse) => (
     <div className="space-y-4">
@@ -293,12 +293,12 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
     </div>
   );
 
- 
+
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-opacity-50 flex items-center justify-center p-4 z-50">
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-[2px] flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative">
         <button
           onClick={onClose}
@@ -314,8 +314,8 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
               Study Schedule - {subjectName.toLocaleUpperCase()}
             </h2>
             <p className="mt-2 text-gray-600">
-              {hasExistingSchedule 
-                ? 'View your current study schedule and assignments' 
+              {hasExistingSchedule
+                ? 'View your current study schedule and assignments'
                 : 'Plan and organize your study sessions effectively'}
             </p>
           </div>
@@ -375,7 +375,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
                   <p className="text-xl text-gray-600 mb-6">
                     Ready to generate your personalized study schedule?
                   </p>
-                  <Button 
+                  <Button
                     onClick={generateSchedule}
                     size="lg"
                     className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold"
