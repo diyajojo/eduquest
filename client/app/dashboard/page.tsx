@@ -314,7 +314,7 @@ const Schedule = () => {
       title: 'Database Mini Project',
       description: 'Develop a complete database application with frontend for library management including all CRUD operations.',
       duration: '3 weeks',
-      status: 'in_progress',
+      status: 'pending',
       date: new Date().toISOString()
     }
   ];
