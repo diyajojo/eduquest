@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Book, Bell, ChevronDown, LogOut, ChevronRight, AlertTriangle, TrendingUp, Target, Zap } from 'lucide-react';
+import { Book, Bell, ChevronDown, LogOut, ChevronRight, AlertTriangle, TrendingUp, Target, Zap, Library } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import EmptyState from './components/emptystate';
 import ModuleTopicsModal from './components/topicmodal';
@@ -9,6 +9,7 @@ import FlashcardModal from './components/flashcardmodal';
 import ScheduleModal from './components/schedulemodal';
 import AssignmentCard from './components/assigmentcard';
 import NotificationsModal from './components/notificationmodal';
+import ResourcesModal from './components/resourcesmodal';
 
 // Interfaces
 interface Profile {
@@ -358,6 +359,7 @@ const Schedule = () => {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(subjects[0]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isNotificationsModalOpen, setIsNotificationsModalOpen] = useState(false);
+  const [isResourcesModalOpen, setIsResourcesModalOpen] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>(mockNotifications);
 
   // Subject Content State
@@ -631,6 +633,16 @@ const Schedule = () => {
                 {notifications.length}
               </span>
             )}
+          </button>
+
+
+
+          <button
+            onClick={() => setIsResourcesModalOpen(true)}
+            className="w-full flex items-center gap-3 px-4 py-2 text-left rounded-lg text-gray-700 hover:bg-gray-50 mt-1"
+          >
+            <Library className="h-5 w-5" />
+            <span>Resources</span>
           </button>
 
           {/* My Progress Section */}
@@ -909,6 +921,11 @@ const Schedule = () => {
               notifications={notifications}
             />
 
+            <ResourcesModal
+              isOpen={isResourcesModalOpen}
+              onClose={() => setIsResourcesModalOpen(false)}
+            />
+
             <ModuleTopicsModal
               isOpen={isTopicsModalOpen}
               onClose={() => setIsTopicsModalOpen(false)}
@@ -962,7 +979,7 @@ const Schedule = () => {
           <EmptyState />
         )}
       </div>
-    </div>
+    </div >
   );
 };
 
