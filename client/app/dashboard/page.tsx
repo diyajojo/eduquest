@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Book, Bell, ChevronDown, LogOut, ChevronRight, AlertTriangle, TrendingUp, Target, Zap, Library } from 'lucide-react';
+import { Book, Bell, ChevronDown, LogOut, ChevronRight, AlertTriangle, TrendingUp, Target, Zap, Library, Settings } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import EmptyState from './components/emptystate';
 import ModuleTopicsModal from './components/topicmodal';
@@ -10,6 +10,7 @@ import ScheduleModal from './components/schedulemodal';
 import AssignmentCard from './components/assigmentcard';
 import NotificationsModal from './components/notificationmodal';
 import ResourcesModal from './components/resourcesmodal';
+import SettingsModal from './components/settingsmodal';
 
 // Interfaces
 interface Profile {
@@ -360,6 +361,7 @@ const Schedule = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isNotificationsModalOpen, setIsNotificationsModalOpen] = useState(false);
   const [isResourcesModalOpen, setIsResourcesModalOpen] = useState(false);
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>(mockNotifications);
 
   // Subject Content State
@@ -761,10 +763,18 @@ const Schedule = () => {
 
         </nav>
 
-        <div className="mb-5 p-6">
+        <div className="mb-5 p-6 space-y-2">
+          <button
+            onClick={() => setIsSettingsModalOpen(true)}
+            className="w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-50 transition-all font-medium"
+          >
+            <Settings size={20} />
+            <span>Settings</span>
+          </button>
+
           <button
             onClick={handleLogout}
-            className="w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-lg text-black hover:bg-red-400/10 hover:text-red-400 transition-all"
+            className="w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-lg text-black hover:bg-red-400/10 hover:text-red-400 transition-all font-medium"
           >
             <LogOut size={20} />
             <span>Logout</span>
@@ -924,6 +934,12 @@ const Schedule = () => {
             <ResourcesModal
               isOpen={isResourcesModalOpen}
               onClose={() => setIsResourcesModalOpen(false)}
+            />
+
+            <SettingsModal
+              isOpen={isSettingsModalOpen}
+              onClose={() => setIsSettingsModalOpen(false)}
+              profile={profile}
             />
 
             <ModuleTopicsModal
