@@ -93,6 +93,8 @@ const Schedule = () => {
 
   const mockTopics: Topic[] = [
     { id: '1', topic_name: 'Introduction to DBMS', subject_id: '1', module_no: 1 },
+    { id: '1', topic_name: 'Introduction to DBMS', subject_id: '1', module_no: 1 },
+    { id: '1', topic_name: 'Introduction to DBMS', subject_id: '1', module_no: 1 },
     { id: '2', topic_name: 'ER Model', subject_id: '1', module_no: 1 },
     { id: '3', topic_name: 'Relational Model', subject_id: '1', module_no: 2 },
     { id: '4', topic_name: 'SQL', subject_id: '1', module_no: 2 },
@@ -103,18 +105,29 @@ const Schedule = () => {
 
   const mockQuestions: Question[] = [
     { id: '1', question_text: 'What is normalization?', answer_text: 'Process of organizing data in a database.', subject_id: '1', module_no: 3 },
+    { id: '2', question_text: 'Explain ACID properties.', answer_text: 'Atomicity, Consistency, Isolation, Durability.', subject_id: '1', module_no: 3 },
+    { id: '1', question_text: 'What is normalization?', answer_text: 'Process of organizing data in a database.', subject_id: '1', module_no: 3 },
     { id: '2', question_text: 'Explain ACID properties.', answer_text: 'Atomicity, Consistency, Isolation, Durability.', subject_id: '1', module_no: 4 },
+    { id: '1', question_text: 'What is normalization?', answer_text: 'Process of organizing data in a database.', subject_id: '1', module_no: 4 },
+    { id: '2', question_text: 'Explain ACID properties.', answer_text: 'Atomicity, Consistency, Isolation, Durability.', subject_id: '1', module_no: 4 },
+    { id: '1', question_text: 'What is normalization?', answer_text: 'Process of organizing data in a database.', subject_id: '1', module_no: 1 },
+    { id: '2', question_text: 'Explain ACID properties.', answer_text: 'Atomicity, Consistency, Isolation, Durability.', subject_id: '1', module_no: 1 },
   ];
 
   const mockFlashcards: Flashcard[] = [
     { id: '1', question_text: 'What is a Primary Key?', answer_text: 'Unique identifier for a record.', subject_id: '1', module_no: 2 },
+    { id: '2', question_text: 'What is normalization in databases?', answer_text: 'Process of organizing data to reduce redundancy.', subject_id: '1', module_no: 1 },
     { id: '2', question_text: 'What is normalization in databases?', answer_text: 'Process of organizing data to reduce redundancy.', subject_id: '1', module_no: 2 },
-    
+    { id: '2', question_text: 'What is normalization in databases?', answer_text: 'Process of organizing data to reduce redundancy.', subject_id: '1', module_no: 3 },
+    { id: '2', question_text: 'What is normalization in databases?', answer_text: 'Process of organizing data to reduce redundancy.', subject_id: '1', module_no: 4 },
+    { id: '2', question_text: 'What is normalization in databases?', answer_text: 'Process of organizing data to reduce redundancy.', subject_id: '1', module_no: 5 },
+
   ];
 
   const mockAssignments: Assignment[] = [
     { id: '1', schedule_id: '1', title: 'DBMS Lab Project', description: 'Complete the hospital management system.', duration: '2 weeks', status: 'pending', date: new Date().toISOString() },
     { id: '2', schedule_id: '1', title: 'OS Assignment 1', description: 'Process scheduling algorithms.', duration: '1 week', status: 'completed', date: new Date(Date.now() - 86400000).toISOString() },
+    { id: '3', schedule_id: '1', title: 'Physics Assignment', description: 'Process scheduling algorithms.', duration: '1 week', status: 'pending', date: new Date(Date.now() - 86400000).toISOString() }
   ];
 
   const mockNotifications: Notification[] = [
