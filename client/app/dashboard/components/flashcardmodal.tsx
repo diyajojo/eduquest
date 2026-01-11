@@ -26,6 +26,10 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
 
+  // Theme colors from the site
+  const primaryColor = "rgba(255, 140, 90, 1)"; // Orange
+  const backgroundColor = "rgba(18, 87, 116, 1)"; // Blue
+
   if (!isOpen) return null;
 
   const EmptyCardState = () => (
@@ -71,18 +75,18 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
   };
 
   return (
-    <div 
+    <div
       className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
       onClick={handleBackdropClick}
     >
-      <div className="bg-white rounded-xl p-6 w-full max-w-2xl" onClick={e => e.stopPropagation()}>
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="font-noto text-xl font-semibold text-gray-800">
+      <div className="bg-white rounded-2xl p-8 w-full max-w-3xl shadow-2xl" onClick={e => e.stopPropagation()}>
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="font-josefinSans text-2xl font-bold text-gray-800">
             Flashcards - {module}
           </h2>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
+            className="text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full w-10 h-10 flex items-center justify-center text-3xl font-bold transition-all"
           >
             ×
           </button>
@@ -91,7 +95,7 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
         {flashcards.length > 0 ? (
           <div className="space-y-6">
             {/* Card Container */}
-            <div className="relative w-full h-96">
+            <div className="relative w-full h-[450px]">
               <div
                 className="w-full h-full transition-all duration-500 cursor-pointer [transform-style:preserve-3d]"
                 style={{
@@ -100,30 +104,48 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
                 onClick={handleFlip}
               >
                 {/* Front of Card (Question) */}
-                <div 
-                  className="absolute inset-0 bg-white border-2 border-gray-200 rounded-xl p-8 flex flex-col items-center justify-center [backface-visibility:hidden]"
+                <div
+                  className="absolute inset-0 bg-white rounded-2xl p-10 flex flex-col items-center justify-center [backface-visibility:hidden]  border-4"
+                  
                 >
-                  <h3 className="font-roboto text-lg font-bold text-gray-600  mb-4">Question:</h3>
-                  <p className="font-noto text-xl text-center text-gray-800">
+                  <div
+                    className="absolute top-6 left-6 px-5 py-2 rounded-full"
+                    style={{ backgroundColor: primaryColor }}
+                  >
+                    <h3 className="font-josefinSans text-sm font-bold text-white">QUESTION</h3>
+                  </div>
+                  <p className="font-josefinSans text-2xl text-center font-semibold leading-relaxed px-8" style={{ color: backgroundColor }}>
                     {flashcards[currentCardIndex].question_text}
                   </p>
-                  <div className="absolute bottom-4 text-sm text-blue-600 flex items-center gap-2">
+                  <div
+                    className="absolute bottom-6 text-sm text-white flex items-center gap-2 px-5 py-2 rounded-full"
+                    style={{ backgroundColor: backgroundColor }}
+                  >
                     <RotateCw className="w-4 h-4" />
-                    Click to see answer
+                    <span className="font-josefinSans font-medium">Click to reveal answer</span>
                   </div>
                 </div>
 
                 {/* Back of Card (Answer) */}
-                <div 
-                  className="absolute inset-0 bg-white border-2 border-gray-200 rounded-xl p-8 flex flex-col items-center justify-center [backface-visibility:hidden] [transform:rotateY(180deg)]"
+                <div
+                  className="absolute inset-0 bg-white rounded-2xl p-10 flex flex-col items-center justify-center [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-2xl border-4"
+             
                 >
-                  <h3 className="font-roboto text-lg font-bold  text-gray-600 mb-4">Answer:</h3>
-                  <p className="font-noto text-xl text-center text-gray-800">
+                  <div
+                    className="absolute top-6 left-6 px-5 py-2 rounded-full"
+                    style={{ backgroundColor: backgroundColor }}
+                  >
+                    <h3 className="font-josefinSans text-sm font-bold text-white">ANSWER</h3>
+                  </div>
+                  <p className="font-josefinSans text-2xl text-center font-semibold leading-relaxed px-8" style={{ color: primaryColor }}>
                     {flashcards[currentCardIndex].answer_text}
                   </p>
-                  <div className="absolute bottom-4 text-sm text-blue-600 flex items-center gap-2">
+                  <div
+                    className="absolute bottom-6 text-sm text-white flex items-center gap-2 px-5 py-2 rounded-full"
+                    style={{ backgroundColor: primaryColor }}
+                  >
                     <RotateCw className="w-4 h-4" />
-                    Click to see question
+                    <span className="font-josefinSans font-medium">Click to see question</span>
                   </div>
                 </div>
               </div>
@@ -133,20 +155,22 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
             <div className="flex items-center justify-between px-4">
               <button
                 onClick={handlePrevCard}
-                className="p-3 rounded-full hover:bg-gray-100 text-gray-700"
+                className="p-3 rounded-full text-white shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+                style={{ backgroundColor: backgroundColor }}
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
 
-              <div className="text-center">
-                <p className="text-sm text-gray-600 font-medium">
+              <div className="text-center bg-gray-100 px-6 py-3 rounded-full border-2" >
+                <p className="font-josefinSans text-sm font-bold" style={{ color: backgroundColor }}>
                   Card {currentCardIndex + 1} of {flashcards.length}
                 </p>
               </div>
 
               <button
                 onClick={handleNextCard}
-                className="p-3 rounded-full hover:bg-gray-100 text-gray-700"
+                className="p-3 rounded-full text-white shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+                style={{ backgroundColor: primaryColor }}
               >
                 <ChevronRight className="w-6 h-6" />
               </button>

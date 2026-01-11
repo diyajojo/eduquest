@@ -92,48 +92,266 @@ const Schedule = () => {
   ];
 
   const mockTopics: Topic[] = [
+    // Module 1
     { id: '1', topic_name: 'Introduction to DBMS', subject_id: '1', module_no: 1 },
-    { id: '1', topic_name: 'Introduction to DBMS', subject_id: '1', module_no: 1 },
-    { id: '1', topic_name: 'Introduction to DBMS', subject_id: '1', module_no: 1 },
-    { id: '2', topic_name: 'ER Model', subject_id: '1', module_no: 1 },
-    { id: '3', topic_name: 'Relational Model', subject_id: '1', module_no: 2 },
-    { id: '4', topic_name: 'SQL', subject_id: '1', module_no: 2 },
-    { id: '5', topic_name: 'Normalization', subject_id: '1', module_no: 3 },
-    { id: '6', topic_name: 'Transaction Management', subject_id: '1', module_no: 4 },
-    { id: '7', topic_name: 'Concurrency Control', subject_id: '1', module_no: 5 },
+    { id: '2', topic_name: 'Database Architecture', subject_id: '1', module_no: 1 },
+    { id: '3', topic_name: 'ER Model and ER Diagrams', subject_id: '1', module_no: 1 },
+    { id: '4', topic_name: 'Entity Types and Relationships', subject_id: '1', module_no: 1 },
+    { id: '5', topic_name: 'Keys in DBMS', subject_id: '1', module_no: 1 },
+
+    // Module 2
+    { id: '6', topic_name: 'Relational Model Concepts', subject_id: '1', module_no: 2 },
+    { id: '7', topic_name: 'Relational Algebra', subject_id: '1', module_no: 2 },
+    { id: '8', topic_name: 'SQL Basics and DDL', subject_id: '1', module_no: 2 },
+    { id: '9', topic_name: 'SQL DML and Queries', subject_id: '1', module_no: 2 },
+    { id: '10', topic_name: 'Joins and Subqueries', subject_id: '1', module_no: 2 },
+
+    // Module 3
+    { id: '11', topic_name: 'Functional Dependencies', subject_id: '1', module_no: 3 },
+    { id: '12', topic_name: 'Normalization (1NF, 2NF, 3NF)', subject_id: '1', module_no: 3 },
+    { id: '13', topic_name: 'BCNF and Higher Normal Forms', subject_id: '1', module_no: 3 },
+    { id: '14', topic_name: 'Decomposition and Lossless Join', subject_id: '1', module_no: 3 },
+
+    // Module 4
+    { id: '15', topic_name: 'Transaction Concepts', subject_id: '1', module_no: 4 },
+    { id: '16', topic_name: 'ACID Properties', subject_id: '1', module_no: 4 },
+    { id: '17', topic_name: 'Concurrency Control', subject_id: '1', module_no: 4 },
+    { id: '18', topic_name: 'Locking Techniques', subject_id: '1', module_no: 4 },
+    { id: '19', topic_name: 'Deadlock Handling', subject_id: '1', module_no: 4 },
+
+    // Module 5
+    { id: '20', topic_name: 'Database Recovery', subject_id: '1', module_no: 5 },
+    { id: '21', topic_name: 'Log-Based Recovery', subject_id: '1', module_no: 5 },
+    { id: '22', topic_name: 'Indexing and B-Trees', subject_id: '1', module_no: 5 },
+    { id: '23', topic_name: 'Query Optimization', subject_id: '1', module_no: 5 },
+    { id: '24', topic_name: 'Database Security', subject_id: '1', module_no: 5 },
   ];
 
   const mockQuestions: Question[] = [
-    { id: '1', question_text: 'What is normalization?', answer_text: 'Process of organizing data in a database.', subject_id: '1', module_no: 3 },
-    { id: '2', question_text: 'Explain ACID properties.', answer_text: 'Atomicity, Consistency, Isolation, Durability.', subject_id: '1', module_no: 3 },
-    { id: '1', question_text: 'What is normalization?', answer_text: 'Process of organizing data in a database.', subject_id: '1', module_no: 3 },
-    { id: '2', question_text: 'Explain ACID properties.', answer_text: 'Atomicity, Consistency, Isolation, Durability.', subject_id: '1', module_no: 4 },
-    { id: '1', question_text: 'What is normalization?', answer_text: 'Process of organizing data in a database.', subject_id: '1', module_no: 4 },
-    { id: '2', question_text: 'Explain ACID properties.', answer_text: 'Atomicity, Consistency, Isolation, Durability.', subject_id: '1', module_no: 4 },
-    { id: '1', question_text: 'What is normalization?', answer_text: 'Process of organizing data in a database.', subject_id: '1', module_no: 1 },
-    { id: '2', question_text: 'Explain ACID properties.', answer_text: 'Atomicity, Consistency, Isolation, Durability.', subject_id: '1', module_no: 1 },
+    // Module 1 Questions
+    {
+      id: '1',
+      question_text: 'Explain the three-schema architecture of DBMS with a neat diagram.',
+      answer_text: 'The three-schema architecture divides the database into three levels: External Schema (user views), Conceptual Schema (logical structure of entire database), and Internal Schema (physical storage). This provides data independence where changes at one level do not affect other levels. The external level defines different user views, conceptual level describes what data is stored, and internal level describes how data is physically stored.',
+      subject_id: '1',
+      module_no: 1
+    },
+    {
+      id: '2',
+      question_text: 'Differentiate between entity type and entity set. Explain with examples.',
+      answer_text: 'Entity Type is a category or template that defines a collection of entities with same attributes (e.g., STUDENT with attributes: ID, Name, Age). Entity Set is the actual collection of entity instances at a particular time (e.g., all students currently enrolled: {S1: John, 20}, {S2: Mary, 21}). Entity type is the schema, while entity set is the data.',
+      subject_id: '1',
+      module_no: 1
+    },
+    {
+      id: '3',
+      question_text: 'What are the different types of keys in DBMS? Explain each briefly.',
+      answer_text: 'Super Key: Any set of attributes that uniquely identifies a tuple. Candidate Key: Minimal super key with no redundant attributes. Primary Key: Selected candidate key to uniquely identify tuples. Foreign Key: Attribute referencing primary key of another relation. Alternate Key: Candidate keys not chosen as primary key. Composite Key: Primary key consisting of multiple attributes.',
+      subject_id: '1',
+      module_no: 1
+    },
+
+    // Module 2 Questions
+    {
+      id: '4',
+      question_text: 'Explain the different types of JOIN operations in SQL with examples.',
+      answer_text: 'INNER JOIN: Returns matching rows from both tables. LEFT JOIN: Returns all rows from left table and matching rows from right table, NULL for non-matches. RIGHT JOIN: Returns all rows from right table and matching rows from left table. FULL OUTER JOIN: Returns all rows from both tables, with NULL where no match exists. CROSS JOIN: Returns Cartesian product of both tables. Example: SELECT * FROM Students INNER JOIN Courses ON Students.course_id = Courses.id',
+      subject_id: '1',
+      module_no: 2
+    },
+    {
+      id: '5',
+      question_text: 'What is the difference between WHERE and HAVING clause in SQL?',
+      answer_text: 'WHERE clause filters rows before grouping and cannot use aggregate functions. It is applied on individual rows. HAVING clause filters groups after GROUP BY operation and can use aggregate functions. Example: SELECT dept, COUNT(*) FROM emp WHERE salary > 5000 GROUP BY dept HAVING COUNT(*) > 2. WHERE filters employees with salary > 5000, HAVING filters departments with more than 2 such employees.',
+      subject_id: '1',
+      module_no: 2
+    },
+    {
+      id: '6',
+      question_text: 'Explain Relational Algebra operations: Selection, Projection, and Cartesian Product.',
+      answer_text: 'Selection (σ): Selects tuples that satisfy a given condition, returns subset of rows. Example: σ(age>20)(Student). Projection (π): Selects specified attributes, returns subset of columns. Example: π(name,age)(Student). Cartesian Product (×): Combines each tuple of first relation with every tuple of second relation. Example: Student × Course produces all possible combinations.',
+      subject_id: '1',
+      module_no: 2
+    },
+
+    // Module 3 Questions
+    {
+      id: '7',
+      question_text: 'Define functional dependency and explain its types with examples.',
+      answer_text: 'Functional Dependency (X→Y) means value of X uniquely determines value of Y. Types: Trivial FD (Y⊆X, e.g., AB→A), Non-trivial FD (Y⊄X, e.g., StudentID→Name), Complete FD (removing any attribute from X breaks dependency), Partial FD (dependency holds with subset of X), and Transitive FD (X→Y and Y→Z implies X→Z). Example: In Student(ID, Name, Dept, HOD), ID→Name, Dept→HOD, therefore ID→HOD is transitive.',
+      subject_id: '1',
+      module_no: 3
+    },
+    {
+      id: '8',
+      question_text: 'Explain the process of normalization up to 3NF with an example.',
+      answer_text: '1NF: Eliminate repeating groups, ensure atomic values. 2NF: Remove partial dependencies (non-prime attributes fully dependent on candidate key). 3NF: Remove transitive dependencies. Example: Student(ID, Name, Dept, HOD) - Not in 2NF if Dept→HOD exists. Solution: Student(ID, Name, Dept) and Department(Dept, HOD). This achieves 3NF as no transitive dependencies remain.',
+      subject_id: '1',
+      module_no: 3
+    },
+    {
+      id: '9',
+      question_text: 'What is BCNF? How is it different from 3NF?',
+      answer_text: 'BCNF (Boyce-Codd Normal Form) is stricter than 3NF. In BCNF, for every functional dependency X→Y, X must be a super key. 3NF allows non-prime attributes to depend on candidate keys. A relation in BCNF is always in 3NF, but 3NF relation may not be in BCNF. BCNF eliminates all redundancy based on functional dependencies, while 3NF may allow some redundancy to preserve dependencies.',
+      subject_id: '1',
+      module_no: 3
+    },
+
+    // Module 4 Questions
+    {
+      id: '10',
+      question_text: 'Explain ACID properties of transactions in detail.',
+      answer_text: 'Atomicity: Transaction is all-or-nothing; either all operations complete or none do. Consistency: Transaction brings database from one valid state to another, maintaining all constraints. Isolation: Concurrent transactions execute as if sequential, preventing interference. Durability: Once committed, changes persist even after system failure. Example: Bank transfer must be atomic (debit and credit both occur), consistent (total money unchanged), isolated (other transactions dont see partial state), and durable (survives crashes).',
+      subject_id: '1',
+      module_no: 4
+    },
+    {
+      id: '11',
+      question_text: 'What are the different transaction states? Explain with a state diagram.',
+      answer_text: 'Active: Initial state, transaction is executing. Partially Committed: After final operation executed, before commit. Committed: Transaction successfully completed, changes permanent. Failed: Transaction cannot proceed after encountering error. Aborted: Transaction rolled back, database restored to state before transaction started. Terminated: Transaction left the system. Flow: Active → Partially Committed → Committed → Terminated, or Active → Failed → Aborted → Terminated.',
+      subject_id: '1',
+      module_no: 4
+    },
+    {
+      id: '12',
+      question_text: 'Explain Two-Phase Locking (2PL) protocol and its variants.',
+      answer_text: 'Two-Phase Locking ensures serializability with two phases: Growing Phase (acquire locks, no release) and Shrinking Phase (release locks, no acquire). Variants: Basic 2PL (described above), Conservative 2PL (acquire all locks before execution), Strict 2PL (hold all locks until commit/abort, prevents cascading rollback), and Rigorous 2PL (hold all locks until transaction ends). Strict and Rigorous 2PL are most commonly used in practice.',
+      subject_id: '1',
+      module_no: 4
+    },
+
+    // Module 5 Questions
+    {
+      id: '13',
+      question_text: 'Explain log-based recovery techniques: Deferred and Immediate update.',
+      answer_text: 'Deferred Update: All updates recorded in log but written to database only after commit. If transaction fails, log entries are discarded. On recovery, only committed transactions need to be redone. Immediate Update: Database updated before commit, changes logged. Failed transactions must be undone using log. Recovery requires both UNDO (uncommitted transactions) and REDO (committed transactions). Deferred is simpler but requires more buffer space.',
+      subject_id: '1',
+      module_no: 5
+    },
+    {
+      id: '14',
+      question_text: 'What is a B-Tree? Explain its properties and advantages in database indexing.',
+      answer_text: 'B-Tree is balanced tree structure where: all leaves at same level, each node has maximum m children (order m), minimum ⌈m/2⌉ children (except root), keys sorted within node. Advantages: Logarithmic search time O(log n), efficient for range queries, reduces disk I/O as each node contains multiple keys, maintains balance automatically on insertion/deletion. Used in database indexing because it minimizes disk accesses by storing multiple keys per disk block.',
+      subject_id: '1',
+      module_no: 5
+    },
+    {
+      id: '15',
+      question_text: 'Explain query optimization and the role of query processing phases.',
+      answer_text: 'Query Optimization selects most efficient execution plan from possible alternatives. Phases: (1) Parsing and Translation: Convert SQL to relational algebra, check syntax/semantics. (2) Optimization: Generate equivalent expressions, estimate cost using statistics, choose minimum cost plan. (3) Evaluation: Execute selected plan. Optimizer uses heuristics (pushing selections down) and cost-based methods (comparing I/O and CPU costs). Goal is minimizing response time and resource usage.',
+      subject_id: '1',
+      module_no: 5
+    },
   ];
 
   const mockFlashcards: Flashcard[] = [
-    { id: '1', question_text: 'What is a Primary Key?', answer_text: 'Unique identifier for a record.', subject_id: '1', module_no: 2 },
-    { id: '2', question_text: 'What is normalization in databases?', answer_text: 'Process of organizing data to reduce redundancy.', subject_id: '1', module_no: 1 },
-    { id: '2', question_text: 'What is normalization in databases?', answer_text: 'Process of organizing data to reduce redundancy.', subject_id: '1', module_no: 2 },
-    { id: '2', question_text: 'What is normalization in databases?', answer_text: 'Process of organizing data to reduce redundancy.', subject_id: '1', module_no: 3 },
-    { id: '2', question_text: 'What is normalization in databases?', answer_text: 'Process of organizing data to reduce redundancy.', subject_id: '1', module_no: 4 },
-    { id: '2', question_text: 'What is normalization in databases?', answer_text: 'Process of organizing data to reduce redundancy.', subject_id: '1', module_no: 5 },
+    // Module 1 Flashcards
+    { id: '1', question_text: 'What is a Primary Key?', answer_text: 'A primary key is a unique identifier for each record in a database table. It must contain unique values and cannot contain NULL values. Each table can have only one primary key.', subject_id: '1', module_no: 1 },
+    { id: '2', question_text: 'What is Data Independence?', answer_text: 'Data independence is the ability to modify schema at one level without affecting schema at the next higher level. Two types: Logical (modify conceptual schema without changing external schema) and Physical (modify internal schema without changing conceptual schema).', subject_id: '1', module_no: 1 },
+    { id: '3', question_text: 'What is an Entity?', answer_text: 'An entity is a real-world object or thing that has an independent existence and can be distinctly identified. Examples include Student, Employee, Course. Each entity has attributes that describe its properties.', subject_id: '1', module_no: 1 },
 
+    // Module 2 Flashcards
+    { id: '4', question_text: 'What is a Foreign Key?', answer_text: 'A foreign key is an attribute in one table that references the primary key of another table. It establishes relationships between tables and maintains referential integrity in the database.', subject_id: '1', module_no: 2 },
+    { id: '5', question_text: 'What is SQL?', answer_text: 'SQL (Structured Query Language) is a standard language for managing and manipulating relational databases. It includes DDL (Data Definition Language), DML (Data Manipulation Language), and DCL (Data Control Language) commands.', subject_id: '1', module_no: 2 },
+    { id: '6', question_text: 'What is a View in SQL?', answer_text: 'A view is a virtual table based on the result of an SQL SELECT query. It contains rows and columns just like a real table but does not store data physically. Views provide security and simplify complex queries.', subject_id: '1', module_no: 2 },
+
+    // Module 3 Flashcards
+    { id: '7', question_text: 'What is Normalization?', answer_text: 'Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity. It involves dividing large tables into smaller ones and defining relationships between them using normal forms (1NF, 2NF, 3NF, BCNF).', subject_id: '1', module_no: 3 },
+    { id: '8', question_text: 'What is Functional Dependency?', answer_text: 'Functional dependency (X→Y) is a constraint between two sets of attributes where the value of X uniquely determines the value of Y. It is fundamental to database normalization and helps identify keys in relations.', subject_id: '1', module_no: 3 },
+    { id: '9', question_text: 'What is 1NF (First Normal Form)?', answer_text: '1NF requires that all attributes contain only atomic (indivisible) values and each attribute contains values of a single type. There should be no repeating groups or arrays within a table.', subject_id: '1', module_no: 3 },
+
+    // Module 4 Flashcards
+    { id: '10', question_text: 'What is a Transaction?', answer_text: 'A transaction is a logical unit of work that contains one or more SQL statements. It must satisfy ACID properties (Atomicity, Consistency, Isolation, Durability) to ensure database reliability and data integrity.', subject_id: '1', module_no: 4 },
+    { id: '11', question_text: 'What is Deadlock?', answer_text: 'Deadlock is a situation where two or more transactions are waiting indefinitely for each other to release locks. It occurs when transactions hold resources and request additional resources held by other transactions, creating a circular wait condition.', subject_id: '1', module_no: 4 },
+    { id: '12', question_text: 'What is Serializability?', answer_text: 'Serializability is a property of concurrent transaction execution that ensures the result is equivalent to some serial execution of those transactions. It is the correctness criterion for concurrent executions and ensures consistency.', subject_id: '1', module_no: 4 },
+
+    // Module 5 Flashcards
+    { id: '13', question_text: 'What is Database Recovery?', answer_text: 'Database recovery is the process of restoring the database to a correct state after a failure. It uses transaction logs to undo incomplete transactions (rollback) and redo committed transactions to ensure ACID properties are maintained.', subject_id: '1', module_no: 5 },
+    { id: '14', question_text: 'What is an Index?', answer_text: 'An index is a database structure that improves the speed of data retrieval operations. It works like a book index, allowing quick location of data without scanning the entire table. Common types include B-Tree, Hash, and Bitmap indexes.', subject_id: '1', module_no: 5 },
+    { id: '15', question_text: 'What is Query Optimization?', answer_text: 'Query optimization is the process of selecting the most efficient execution plan for a query from multiple alternatives. The optimizer considers factors like available indexes, table statistics, and join methods to minimize execution time and resource usage.', subject_id: '1', module_no: 5 },
   ];
 
   const mockAssignments: Assignment[] = [
-    { id: '1', schedule_id: '1', title: 'DBMS Lab Project', description: 'Complete the hospital management system.', duration: '2 weeks', status: 'pending', date: new Date().toISOString() },
-    { id: '2', schedule_id: '1', title: 'OS Assignment 1', description: 'Process scheduling algorithms.', duration: '1 week', status: 'completed', date: new Date(Date.now() - 86400000).toISOString() },
-    { id: '3', schedule_id: '1', title: 'Physics Assignment', description: 'Process scheduling algorithms.', duration: '1 week', status: 'pending', date: new Date(Date.now() - 86400000).toISOString() }
+    {
+      id: '1',
+      schedule_id: '1',
+      title: 'DBMS ER Diagram Assignment',
+      description: 'Design ER diagram for university management system including students, courses, faculty, and departments.',
+      duration: '1 week',
+      status: 'pending',
+      date: new Date(Date.now() + 172800000).toISOString()
+    },
+    {
+      id: '2',
+      schedule_id: '1',
+      title: 'SQL Queries Practice',
+      description: 'Write complex SQL queries involving joins, subqueries, and aggregate functions for the given database schema.',
+      duration: '5 days',
+      status: 'pending',
+      date: new Date(Date.now() + 432000000).toISOString()
+    },
+    {
+      id: '3',
+      schedule_id: '1',
+      title: 'Normalization Exercise',
+      description: 'Normalize given unnormalized relations up to BCNF and explain each step with functional dependencies.',
+      duration: '1 week',
+      status: 'completed',
+      date: new Date(Date.now() - 86400000).toISOString()
+    },
+    {
+      id: '4',
+      schedule_id: '1',
+      title: 'Transaction Management Lab',
+      description: 'Implement concurrency control using two-phase locking protocol and demonstrate deadlock scenarios.',
+      duration: '10 days',
+      status: 'pending',
+      date: new Date(Date.now() + 604800000).toISOString()
+    },
+    {
+      id: '5',
+      schedule_id: '1',
+      title: 'Database Mini Project',
+      description: 'Develop a complete database application with frontend for library management including all CRUD operations.',
+      duration: '3 weeks',
+      status: 'in_progress',
+      date: new Date().toISOString()
+    }
   ];
 
   const mockNotifications: Notification[] = [
-    { id: '1', title: 'DBMS Assignment Due', description: 'Submit by Friday', date: new Date().toISOString(), daysLeft: 2, type: 'assignment' },
-    { id: '2', title: 'OS Quiz', description: 'Module 1 and 2', date: new Date(Date.now() + 172800000).toISOString(), daysLeft: 2, type: 'schedule' },
-      { id: '3', title: 'CN Tutorial', description: 'Module 1 and 2', date: new Date(Date.now() + 172800000).toISOString(), daysLeft: 2, type: 'schedule' }
+    {
+      id: '1',
+      title: 'DBMS ER Diagram Assignment Due',
+      description: 'Submit ER diagram by end of week',
+      date: new Date(Date.now() + 172800000).toISOString(),
+      daysLeft: 2,
+      type: 'assignment'
+    },
+    {
+      id: '2',
+      title: 'SQL Queries Assignment',
+      description: 'Practice queries submission in 5 days',
+      date: new Date(Date.now() + 432000000).toISOString(),
+      daysLeft: 5,
+      type: 'assignment'
+    },
+    {
+      id: '3',
+      title: 'Database Project Checkpoint',
+      description: 'First milestone review tomorrow',
+      date: new Date(Date.now() + 86400000).toISOString(),
+      daysLeft: 1,
+      type: 'schedule'
+    },
+    {
+      id: '4',
+      title: 'Module 4 Quiz',
+      description: 'Transaction Management quiz next week',
+      date: new Date(Date.now() + 604800000).toISOString(),
+      daysLeft: 7,
+      type: 'schedule'
+    }
   ];
 
   // State
@@ -159,6 +377,9 @@ const Schedule = () => {
   const [selectedDateEvents, setSelectedDateEvents] = useState<any[]>([]);
   const [isDateEventsModalOpen, setIsDateEventsModalOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+
+  // Important dates to mark in red (assignments, exams, deadlines)
+  const importantDates = [15, 18, 22, 25, 28]; // Days of the month to mark in red
 
   const primaryColor = "rgba(255, 140, 90, 1)";
   const backgroundColor = "rgba(18, 87, 116, 1)";
@@ -244,10 +465,17 @@ const Schedule = () => {
 
       const hasEvents = !!calendarEvents[dateKey] && calendarEvents[dateKey].length > 0;
       const isValidDay = day !== null;
+      const isImportantDate = importantDates.includes(day);
 
-      const buttonClasses = isValidDay && hasEvents
-        ? "text-center p-2 rounded-full bg-green-100 text-green-600 hover:bg-green-200"
-        : "text-center p-2 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200";
+      let buttonClasses = "text-center p-2 rounded-full transition-all";
+
+      if (isImportantDate) {
+        buttonClasses += " bg-red-100 text-red-600 hover:bg-red-200 font-semibold";
+      } else if (hasEvents) {
+        buttonClasses += " bg-green-100 text-green-600 hover:bg-green-200";
+      } else {
+        buttonClasses += " bg-gray-100 text-gray-600 hover:bg-gray-200";
+      }
 
       return isValidDay ? (
         <button
