@@ -76,23 +76,23 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
       className="fixed inset-0 bg-black/50 backdrop-blur-[2px] flex items-center justify-center p-4 z-50"
       onClick={handleBackdropClick}
     >
-      <div className="bg-white rounded-2xl p-8 w-full max-w-3xl shadow-2xl" onClick={e => e.stopPropagation()}>
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="font-josefinSans text-2xl font-bold text-gray-800">
+      <div className="bg-white rounded-2xl p-4 md:p-8 w-full max-w-3xl shadow-2xl mx-4 md:mx-0" onClick={e => e.stopPropagation()}>
+        <div className="flex justify-between items-center mb-4 md:mb-8">
+          <h2 className="font-josefinSans text-xl md:text-2xl font-bold text-gray-800">
             Flashcards - {module}
           </h2>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full w-10 h-10 flex items-center justify-center text-3xl font-bold transition-all"
+            className="text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center text-2xl md:text-3xl font-bold transition-all"
           >
             ×
           </button>
         </div>
 
         {flashcards.length > 0 ? (
-          <div className="space-y-6">
-
-            <div className="relative w-full h-[450px]">
+          <div className="space-y-4 md:space-y-6">
+            {/* Card Container */}
+            <div className="relative w-full h-[350px] md:h-[450px]">
               <div
                 className="w-full h-full transition-all duration-500 cursor-pointer [transform-style:preserve-3d]"
                 style={{
@@ -100,22 +100,23 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
                 }}
                 onClick={handleFlip}
               >
-
+                {/* Front of Card (Question) */}
                 <div
-                  className="absolute inset-0 bg-white rounded-2xl p-10 flex flex-col items-center justify-center [backface-visibility:hidden]  border-4"
-
+                  className="absolute inset-0 bg-white rounded-2xl p-6 md:p-10 flex flex-col items-center justify-center [backface-visibility:hidden] border-4"
                 >
                   <div
-                    className="absolute top-6 left-6 px-5 py-2 rounded-full"
+                    className="absolute top-4 left-4 md:top-6 md:left-6 px-3 py-1 md:px-5 md:py-2 rounded-full"
                     style={{ backgroundColor: primaryColor }}
                   >
-                    <h3 className="font-josefinSans text-sm font-bold text-white">QUESTION</h3>
+                    <h3 className="font-josefinSans text-xs md:text-sm font-bold text-white">QUESTION</h3>
                   </div>
-                  <p className="font-josefinSans text-2xl text-center font-semibold leading-relaxed px-8" style={{ color: backgroundColor }}>
-                    {flashcards[currentCardIndex].question_text}
-                  </p>
+                  <div className="overflow-y-auto max-h-[200px] md:max-h-full w-full px-2 md:px-0 flex items-center justify-center">
+                    <p className="font-josefinSans text-lg md:text-2xl text-center font-semibold leading-relaxed" style={{ color: backgroundColor }}>
+                      {flashcards[currentCardIndex].question_text}
+                    </p>
+                  </div>
                   <div
-                    className="absolute bottom-6 text-sm text-white flex items-center gap-2 px-5 py-2 rounded-full"
+                    className="absolute bottom-4 md:bottom-6 text-sm text-white flex items-center gap-2 px-4 py-2 md:px-5 md:py-2 rounded-full scale-90 md:scale-100"
                     style={{ backgroundColor: backgroundColor }}
                   >
                     <RotateCw className="w-4 h-4" />
@@ -123,21 +124,23 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
                   </div>
                 </div>
 
+                {/* Back of Card (Answer) */}
                 <div
-                  className="absolute inset-0 bg-white rounded-2xl p-10 flex flex-col items-center justify-center [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-2xl border-4"
-
+                  className="absolute inset-0 bg-white rounded-2xl p-6 md:p-10 flex flex-col items-center justify-center [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-2xl border-4"
                 >
                   <div
-                    className="absolute top-6 left-6 px-5 py-2 rounded-full"
+                    className="absolute top-4 left-4 md:top-6 md:left-6 px-3 py-1 md:px-5 md:py-2 rounded-full"
                     style={{ backgroundColor: backgroundColor }}
                   >
-                    <h3 className="font-josefinSans text-sm font-bold text-white">ANSWER</h3>
+                    <h3 className="font-josefinSans text-xs md:text-sm font-bold text-white">ANSWER</h3>
                   </div>
-                  <p className="font-josefinSans text-2xl text-center font-semibold leading-relaxed px-8" style={{ color: primaryColor }}>
-                    {flashcards[currentCardIndex].answer_text}
-                  </p>
+                  <div className="overflow-y-auto max-h-[200px] md:max-h-full w-full px-2 md:px-0 flex items-center justify-center">
+                    <p className="font-josefinSans text-lg md:text-2xl text-center font-semibold leading-relaxed" style={{ color: primaryColor }}>
+                      {flashcards[currentCardIndex].answer_text}
+                    </p>
+                  </div>
                   <div
-                    className="absolute bottom-6 text-sm text-white flex items-center gap-2 px-5 py-2 rounded-full"
+                    className="absolute bottom-4 md:bottom-6 text-sm text-white flex items-center gap-2 px-4 py-2 md:px-5 md:py-2 rounded-full scale-90 md:scale-100"
                     style={{ backgroundColor: primaryColor }}
                   >
                     <RotateCw className="w-4 h-4" />
@@ -147,28 +150,27 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
               </div>
             </div>
 
-
-            <div className="flex items-center justify-between px-4">
+            <div className="flex items-center justify-between px-2 md:px-4">
               <button
                 onClick={handlePrevCard}
-                className="p-3 rounded-full text-white shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+                className="p-2 md:p-3 rounded-full text-white shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
                 style={{ backgroundColor: backgroundColor }}
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
               </button>
 
-              <div className="text-center bg-gray-100 px-6 py-3 rounded-full border-2" >
-                <p className="font-josefinSans text-sm font-bold" style={{ color: backgroundColor }}>
+              <div className="text-center bg-gray-100 px-4 py-2 md:px-6 md:py-3 rounded-full border-2" >
+                <p className="font-josefinSans text-xs md:text-sm font-bold" style={{ color: backgroundColor }}>
                   Card {currentCardIndex + 1} of {flashcards.length}
                 </p>
               </div>
 
               <button
                 onClick={handleNextCard}
-                className="p-3 rounded-full text-white shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+                className="p-2 md:p-3 rounded-full text-white shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
                 style={{ backgroundColor: primaryColor }}
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
               </button>
             </div>
           </div>

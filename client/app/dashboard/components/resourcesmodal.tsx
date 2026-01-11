@@ -64,53 +64,53 @@ const ResourcesModal: React.FC<ResourcesModalProps> = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-[2px] p-4" onClick={onClose}>
       <div
-        className="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[600px] overflow-hidden flex flex-col"
+        className="bg-white rounded-xl shadow-2xl w-full max-w-2xl h-[85vh] md:h-auto md:max-h-[600px] overflow-hidden flex flex-col mx-4 md:mx-0"
         onClick={e => e.stopPropagation()}
       >
-        <div className="bg-[#125774] text-white p-6 flex justify-between items-center">
+        <div className="bg-[#125774] text-white p-4 md:p-6 flex justify-between items-center flex-shrink-0">
           <div className="flex items-center space-x-3">
-            <Library className="h-8 w-8" />
+            <Library className="h-6 w-6 md:h-8 md:w-8" />
             <div>
-              <h2 className="font-noto text-xl font-bold">RESOURCE LIBRARY</h2>
-              <p className="text-blue-200 text-sm font-light">Recommended Reference Books</p>
+              <h2 className="font-noto text-lg md:text-xl font-bold">RESOURCE LIBRARY</h2>
+              <p className="text-blue-200 text-xs md:text-sm font-light">Recommended Reference Books</p>
             </div>
           </div>
           <button
             onClick={onClose}
             className="hover:bg-white/20 rounded-full p-2 transition-colors"
           >
-            <X className="h-6 w-6" />
+            <X className="h-5 w-5 md:h-6 md:w-6" />
           </button>
         </div>
 
-        <div className="overflow-y-auto p-6 flex-1 bg-gray-50">
-          <div className="grid gap-4">
+        <div className="overflow-y-auto p-4 md:p-6 flex-1 bg-gray-50">
+          <div className="grid grid-cols-1 gap-3 md:gap-4">
             {resources.map((book) => (
               <div
                 key={book.id}
-                className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex gap-4 transition-transform hover:scale-[1.01] hover:shadow-md"
+                className="bg-white p-3 md:p-4 rounded-lg shadow-sm border border-gray-100 flex gap-3 md:gap-4 transition-transform hover:scale-[1.01] hover:shadow-md"
               >
-                <div className={`${book.coverColor} w-16 h-20 rounded shadow-md flex-shrink-0 flex items-center justify-center text-white`}>
-                  <Book className="h-8 w-8 opacity-80" />
+                <div className={`${book.coverColor} w-14 h-18 md:w-16 md:h-20 rounded shadow-md flex-shrink-0 flex items-center justify-center text-white`}>
+                  <Book className="h-6 w-6 md:h-8 md:w-8 opacity-80" />
                 </div>
 
                 <div className="flex-1 min-w-0">
                   <div className="flex justify-between items-start">
-                    <h3 className="font-noto font-bold text-gray-800 text-lg leading-tight mb-1 truncate pr-2">
+                    <h3 className="font-noto font-bold text-gray-800 text-base md:text-lg leading-tight mb-1 truncate pr-2">
                       {book.title}
                     </h3>
                     {book.edition && (
-                      <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full whitespace-nowrap">
+                      <span className="text-[10px] md:text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full whitespace-nowrap">
                         {book.edition}
                       </span>
                     )}
                   </div>
 
-                  <p className="text-sm text-gray-600 mb-2 truncate">{book.author}</p>
+                  <p className="text-xs md:text-sm text-gray-600 mb-2 truncate">{book.author}</p>
 
                   <div className="flex items-center gap-2 mt-2">
-                    <GraduationCap className="h-4 w-4 text-[#E68A5C]" />
-                    <span className="text-xs font-semibold text-[#E68A5C] uppercase tracking-wide">
+                    <GraduationCap className="h-3 w-3 md:h-4 md:w-4 text-[#E68A5C]" />
+                    <span className="text-[10px] md:text-xs font-semibold text-[#E68A5C] uppercase tracking-wide truncate">
                       {book.subject}
                     </span>
                   </div>
@@ -120,8 +120,8 @@ const ResourcesModal: React.FC<ResourcesModalProps> = ({ isOpen, onClose }) => {
           </div>
         </div>
 
-        <div className="p-4 bg-white border-t border-gray-100 text-center">
-          <p className="text-xs text-gray-400">
+        <div className="p-3 md:p-4 bg-white border-t border-gray-100 text-center flex-shrink-0">
+          <p className="text-[10px] md:text-xs text-gray-400">
             These resources are curated based on your current semester curriculum.
           </p>
         </div>

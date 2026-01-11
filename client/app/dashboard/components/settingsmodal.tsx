@@ -31,24 +31,24 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, profile 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-[2px] p-4" onClick={onClose}>
       <div
-        className="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[600px] overflow-hidden flex flex-col md:flex-row"
+        className="bg-white rounded-xl shadow-2xl w-full max-w-4xl h-[90vh] md:h-auto md:max-h-[600px] overflow-hidden flex flex-col md:flex-row mx-4 md:mx-0"
         onClick={e => e.stopPropagation()}
       >
-        <div className="w-full md:w-64 bg-gray-50 border-r border-gray-100 p-6">
-          <h2 className="font-noto text-xl font-bold text-gray-800 mb-6">Settings</h2>
-          <nav className="space-y-2">
+        <div className="w-full md:w-64 bg-gray-50 border-r border-gray-100 p-4 md:p-6 flex-shrink-0 overflow-x-auto md:overflow-visible">
+          <h2 className="font-noto text-lg md:text-xl font-bold text-gray-800 mb-4 md:mb-6 hidden md:block">Settings</h2>
+          <nav className="flex md:flex-col space-x-2 md:space-x-0 md:space-y-2">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors ${activeTab === tab.id
+                  className={`flex-shrink-0 md:w-full flex items-center gap-2 md:gap-3 px-3 py-2 md:px-4 md:py-3 rounded-lg text-left transition-colors whitespace-nowrap ${activeTab === tab.id
                     ? 'bg-blue-100 text-blue-700 font-semibold'
                     : 'text-gray-600 hover:bg-gray-100'
                     }`}
                 >
-                  <Icon className="h-5 w-5" />
+                  <Icon className="h-4 w-4 md:h-5 md:w-5" />
                   <span className="text-sm">{tab.label}</span>
                 </button>
               );
@@ -56,36 +56,36 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, profile 
           </nav>
         </div>
 
-        <div className="flex-1 flex flex-col">
-          <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-white sticky top-0 z-10">
-            <h3 className="font-noto text-xl font-semibold text-gray-800">
+        <div className="flex-1 flex flex-col min-h-0">
+          <div className="p-4 md:p-6 border-b border-gray-100 flex justify-between items-center bg-white sticky top-0 z-10 flex-shrink-0">
+            <h3 className="font-noto text-lg md:text-xl font-semibold text-gray-800">
               {tabs.find(t => t.id === activeTab)?.label}
             </h3>
             <button
               onClick={onClose}
               className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-500"
             >
-              <X className="h-6 w-6" />
+              <X className="h-5 w-5 md:h-6 md:w-6" />
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-8">
+          <div className="flex-1 overflow-y-auto p-4 md:p-8">
             {activeTab === 'profile' && (
               <div className="space-y-6 max-w-lg">
-                <div className="flex items-center gap-6 mb-8">
-                  <div className="w-24 h-24 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-2xl font-bold border-4 border-white shadow-lg relative">
+                <div className="flex items-center gap-4 md:gap-6 mb-6 md:mb-8">
+                  <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xl md:text-2xl font-bold border-4 border-white shadow-lg relative flex-shrink-0">
                     {profile.full_name.split(' ').map(n => n[0]).join('')}
-                    <button className="absolute bottom-0 right-0 bg-blue-600 text-white p-2 rounded-full shadow-sm hover:bg-blue-700 transition-colors">
-                      <User className="h-4 w-4" />
+                    <button className="absolute bottom-0 right-0 bg-blue-600 text-white p-1.5 md:p-2 rounded-full shadow-sm hover:bg-blue-700 transition-colors">
+                      <User className="h-3 w-3 md:h-4 md:w-4" />
                     </button>
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-800 text-lg">{profile.full_name}</h4>
-                    <p className="text-gray-500">Student Account</p>
+                    <h4 className="font-bold text-gray-800 text-base md:text-lg">{profile.full_name}</h4>
+                    <p className="text-sm text-gray-500">Student Account</p>
                   </div>
                 </div>
 
-                <div className="grid gap-6">
+                <div className="grid gap-4 md:gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
                     <div className="relative">
@@ -110,7 +110,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, profile 
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Branch</label>
                       <input

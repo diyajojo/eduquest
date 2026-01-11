@@ -85,7 +85,7 @@ const Home = () => {
 
       <div className="relative z-10 flex flex-col items-center justify-center px-4 pt-12 md:pt-32 pb-20 md:pb-32 text-center">
         <h1 className="font-noto text-3xl md:text-6xl font-extrabold text-white mb-8 md:mb-12 tracking-tight">
-          Your AI Study Assistant
+          Level Up Your Learning
         </h1>
         <p className=" font-roboto text-lg md:text-xl text-white mb-12 md:mb-16 max-w-2xl font-medium leading-relaxed px-2">
           Transform your study routine with personalized learning schedules, smart analysis, and integrated calendar management

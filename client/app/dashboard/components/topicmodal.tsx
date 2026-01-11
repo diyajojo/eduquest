@@ -48,20 +48,20 @@ const ModuleTopicsModal: React.FC<ModuleTopicsModalProps> = ({
       onClick={onClose}
     >
       <div
-        className="bg-gradient-to-br from-purple-50 to-white rounded-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-xl"
+        className="bg-gradient-to-br from-purple-50 to-white rounded-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-xl mx-4 md:mx-0"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="p-6">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="font-noto text-2xl font-semibold text-gray-800">
+        <div className="p-4 md:p-6">
+          <div className="flex justify-between items-center mb-4 md:mb-6">
+            <h2 className="font-noto text-lg md:text-2xl font-semibold text-gray-800 pr-4">
               Important Topics - {module}
             </h2>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-purple-100 rounded-full transition-colors"
+              className="p-1.5 md:p-2 hover:bg-purple-100 rounded-full transition-colors flex-shrink-0"
               aria-label="Close modal"
             >
-              <X className="h-6 w-6 text-gray-500" />
+              <X className="h-5 w-5 md:h-6 md:w-6 text-gray-500" />
             </button>
           </div>
 
