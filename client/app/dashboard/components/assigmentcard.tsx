@@ -50,7 +50,7 @@ const AssignmentCard: React.FC<AssignmentCardProps> = ({ assignment, onStatusUpd
     const newStatus = currentStatus === 'pending' ? 'in_progress' :
                      currentStatus === 'in_progress' ? 'completed' : 'pending';
 
-    // Update local state only (no backend call)
+ 
     setCurrentStatus(newStatus);
     onStatusUpdate(assignment.id, newStatus);
     setIsUpdating(false);
@@ -63,7 +63,7 @@ const AssignmentCard: React.FC<AssignmentCardProps> = ({ assignment, onStatusUpd
       <div className="flex-1">
         <h4 className="font-noto font-medium text-gray-800">{assignment.title}</h4>
         <p className="text-sm text-gray-500">{assignment.date}</p>
-       {/*<p className="text-sm text-gray-600 mt-1">{assignment.description}</p> */}
+     
       </div>
       <button
         onClick={handleStatusClick}

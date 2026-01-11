@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Book, Bell, ChevronDown, LogOut, ChevronRight, AlertTriangle, TrendingUp, Target, Zap, Library, Settings } from 'lucide-react';
+import { Book, Bell, ChevronDown, LogOut, ChevronRight, AlertTriangle, TrendingUp, Target, Zap, Library, Settings, Menu, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import EmptyState from './components/emptystate';
 import ModuleTopicsModal from './components/topicmodal';
@@ -12,7 +12,7 @@ import NotificationsModal from './components/notificationmodal';
 import ResourcesModal from './components/resourcesmodal';
 import SettingsModal from './components/settingsmodal';
 
-// Interfaces
+
 interface Profile {
   full_name: string;
   college_name: string;
@@ -78,7 +78,6 @@ interface Notification {
 const Schedule = () => {
   const router = useRouter();
 
-  // Hardcoded Data
   const profile: Profile = {
     full_name: "Diya Jojo",
     college_name: "Model Engineering College",
@@ -94,34 +93,34 @@ const Schedule = () => {
   ];
 
   const mockTopics: Topic[] = [
-    // Module 1
+
     { id: '1', topic_name: 'Introduction to DBMS', subject_id: '1', module_no: 1 },
     { id: '2', topic_name: 'Database Architecture', subject_id: '1', module_no: 1 },
     { id: '3', topic_name: 'ER Model and ER Diagrams', subject_id: '1', module_no: 1 },
     { id: '4', topic_name: 'Entity Types and Relationships', subject_id: '1', module_no: 1 },
     { id: '5', topic_name: 'Keys in DBMS', subject_id: '1', module_no: 1 },
 
-    // Module 2
+
     { id: '6', topic_name: 'Relational Model Concepts', subject_id: '1', module_no: 2 },
     { id: '7', topic_name: 'Relational Algebra', subject_id: '1', module_no: 2 },
     { id: '8', topic_name: 'SQL Basics and DDL', subject_id: '1', module_no: 2 },
     { id: '9', topic_name: 'SQL DML and Queries', subject_id: '1', module_no: 2 },
     { id: '10', topic_name: 'Joins and Subqueries', subject_id: '1', module_no: 2 },
 
-    // Module 3
+
     { id: '11', topic_name: 'Functional Dependencies', subject_id: '1', module_no: 3 },
     { id: '12', topic_name: 'Normalization (1NF, 2NF, 3NF)', subject_id: '1', module_no: 3 },
     { id: '13', topic_name: 'BCNF and Higher Normal Forms', subject_id: '1', module_no: 3 },
     { id: '14', topic_name: 'Decomposition and Lossless Join', subject_id: '1', module_no: 3 },
 
-    // Module 4
+
     { id: '15', topic_name: 'Transaction Concepts', subject_id: '1', module_no: 4 },
     { id: '16', topic_name: 'ACID Properties', subject_id: '1', module_no: 4 },
     { id: '17', topic_name: 'Concurrency Control', subject_id: '1', module_no: 4 },
     { id: '18', topic_name: 'Locking Techniques', subject_id: '1', module_no: 4 },
     { id: '19', topic_name: 'Deadlock Handling', subject_id: '1', module_no: 4 },
 
-    // Module 5
+
     { id: '20', topic_name: 'Database Recovery', subject_id: '1', module_no: 5 },
     { id: '21', topic_name: 'Log-Based Recovery', subject_id: '1', module_no: 5 },
     { id: '22', topic_name: 'Indexing and B-Trees', subject_id: '1', module_no: 5 },
@@ -130,7 +129,7 @@ const Schedule = () => {
   ];
 
   const mockQuestions: Question[] = [
-    // Module 1 Questions
+
     {
       id: '1',
       question_text: 'Explain the three-schema architecture of DBMS with a neat diagram.',
@@ -153,7 +152,7 @@ const Schedule = () => {
       module_no: 1
     },
 
-    // Module 2 Questions
+
     {
       id: '4',
       question_text: 'Explain the different types of JOIN operations in SQL with examples.',
@@ -176,7 +175,7 @@ const Schedule = () => {
       module_no: 2
     },
 
-    // Module 3 Questions
+
     {
       id: '7',
       question_text: 'Define functional dependency and explain its types with examples.',
@@ -199,7 +198,7 @@ const Schedule = () => {
       module_no: 3
     },
 
-    // Module 4 Questions
+
     {
       id: '10',
       question_text: 'Explain ACID properties of transactions in detail.',
@@ -222,7 +221,7 @@ const Schedule = () => {
       module_no: 4
     },
 
-    // Module 5 Questions
+
     {
       id: '13',
       question_text: 'Explain log-based recovery techniques: Deferred and Immediate update.',
@@ -247,27 +246,22 @@ const Schedule = () => {
   ];
 
   const mockFlashcards: Flashcard[] = [
-    // Module 1 Flashcards
     { id: '1', question_text: 'What is a Primary Key?', answer_text: 'A primary key is a unique identifier for each record in a database table. It must contain unique values and cannot contain NULL values. Each table can have only one primary key.', subject_id: '1', module_no: 1 },
     { id: '2', question_text: 'What is Data Independence?', answer_text: 'Data independence is the ability to modify schema at one level without affecting schema at the next higher level. Two types: Logical (modify conceptual schema without changing external schema) and Physical (modify internal schema without changing conceptual schema).', subject_id: '1', module_no: 1 },
     { id: '3', question_text: 'What is an Entity?', answer_text: 'An entity is a real-world object or thing that has an independent existence and can be distinctly identified. Examples include Student, Employee, Course. Each entity has attributes that describe its properties.', subject_id: '1', module_no: 1 },
 
-    // Module 2 Flashcards
     { id: '4', question_text: 'What is a Foreign Key?', answer_text: 'A foreign key is an attribute in one table that references the primary key of another table. It establishes relationships between tables and maintains referential integrity in the database.', subject_id: '1', module_no: 2 },
     { id: '5', question_text: 'What is SQL?', answer_text: 'SQL (Structured Query Language) is a standard language for managing and manipulating relational databases. It includes DDL (Data Definition Language), DML (Data Manipulation Language), and DCL (Data Control Language) commands.', subject_id: '1', module_no: 2 },
     { id: '6', question_text: 'What is a View in SQL?', answer_text: 'A view is a virtual table based on the result of an SQL SELECT query. It contains rows and columns just like a real table but does not store data physically. Views provide security and simplify complex queries.', subject_id: '1', module_no: 2 },
 
-    // Module 3 Flashcards
     { id: '7', question_text: 'What is Normalization?', answer_text: 'Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity. It involves dividing large tables into smaller ones and defining relationships between them using normal forms (1NF, 2NF, 3NF, BCNF).', subject_id: '1', module_no: 3 },
     { id: '8', question_text: 'What is Functional Dependency?', answer_text: 'Functional dependency (X→Y) is a constraint between two sets of attributes where the value of X uniquely determines the value of Y. It is fundamental to database normalization and helps identify keys in relations.', subject_id: '1', module_no: 3 },
     { id: '9', question_text: 'What is 1NF (First Normal Form)?', answer_text: '1NF requires that all attributes contain only atomic (indivisible) values and each attribute contains values of a single type. There should be no repeating groups or arrays within a table.', subject_id: '1', module_no: 3 },
 
-    // Module 4 Flashcards
     { id: '10', question_text: 'What is a Transaction?', answer_text: 'A transaction is a logical unit of work that contains one or more SQL statements. It must satisfy ACID properties (Atomicity, Consistency, Isolation, Durability) to ensure database reliability and data integrity.', subject_id: '1', module_no: 4 },
     { id: '11', question_text: 'What is Deadlock?', answer_text: 'Deadlock is a situation where two or more transactions are waiting indefinitely for each other to release locks. It occurs when transactions hold resources and request additional resources held by other transactions, creating a circular wait condition.', subject_id: '1', module_no: 4 },
     { id: '12', question_text: 'What is Serializability?', answer_text: 'Serializability is a property of concurrent transaction execution that ensures the result is equivalent to some serial execution of those transactions. It is the correctness criterion for concurrent executions and ensures consistency.', subject_id: '1', module_no: 4 },
 
-    // Module 5 Flashcards
     { id: '13', question_text: 'What is Database Recovery?', answer_text: 'Database recovery is the process of restoring the database to a correct state after a failure. It uses transaction logs to undo incomplete transactions (rollback) and redo committed transactions to ensure ACID properties are maintained.', subject_id: '1', module_no: 5 },
     { id: '14', question_text: 'What is an Index?', answer_text: 'An index is a database structure that improves the speed of data retrieval operations. It works like a book index, allowing quick location of data without scanning the entire table. Common types include B-Tree, Hash, and Bitmap indexes.', subject_id: '1', module_no: 5 },
     { id: '15', question_text: 'What is Query Optimization?', answer_text: 'Query optimization is the process of selecting the most efficient execution plan for a query from multiple alternatives. The optimizer considers factors like available indexes, table statistics, and join methods to minimize execution time and resource usage.', subject_id: '1', module_no: 5 },
@@ -356,49 +350,48 @@ const Schedule = () => {
     }
   ];
 
-  // State
+
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(subjects[0]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isNotificationsModalOpen, setIsNotificationsModalOpen] = useState(false);
   const [isResourcesModalOpen, setIsResourcesModalOpen] = useState(false);
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>(mockNotifications);
 
-  // Subject Content State
+
   const [topics] = useState<Topic[]>(mockTopics);
   const [questions] = useState<Question[]>(mockQuestions);
   const [flashcards] = useState<Flashcard[]>(mockFlashcards);
   const [assignments, setAssignments] = useState<Assignment[]>(mockAssignments);
 
-  // Modals State
+
   const [isFlashcardsModalOpen, setIsFlashcardsModalOpen] = useState(false);
   const [isTopicsModalOpen, setIsTopicsModalOpen] = useState(false);
   const [isQuestionsModalOpen, setIsQuestionsModalOpen] = useState(false);
   const [isScheduleModalOpen, setIsScheduleModalOpen] = useState(false);
   const [selectedModule, setSelectedModule] = useState('');
   const [currentMonth, setCurrentMonth] = useState<number>(new Date().getMonth());
-  const [calendarEvents, setCalendarEvents] = useState<{ [key: string]: any[] }>({}); // Mock events would go here if needed
+  const [calendarEvents, setCalendarEvents] = useState<{ [key: string]: any[] }>({});
   const [selectedDateEvents, setSelectedDateEvents] = useState<any[]>([]);
   const [isDateEventsModalOpen, setIsDateEventsModalOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
-  // Important dates to mark in red (assignments, exams, deadlines)
-  const importantDates = [15, 18, 22, 25, 28]; // Days of the month to mark in red
 
-  // Progress tracking
+  const importantDates = [15, 8, 22, 25, 28];
+
+
   const [isProgressOpen, setIsProgressOpen] = useState(false);
 
-  // Calculate progress for each subject
   const calculateProgress = () => {
     const totalTopics = mockTopics.length;
     const totalQuestions = mockQuestions.length;
     const totalFlashcards = mockFlashcards.length;
     const totalAssignments = mockAssignments.length;
 
-    // Simulate reviewed/completed items (you can make this dynamic later)
-    const reviewedTopics = 12; // out of 24
-    const answeredQuestions = 7; // out of 15
-    const reviewedFlashcards = 9; // out of 15
+    const reviewedTopics = 12;
+    const answeredQuestions = 7;
+    const reviewedFlashcards = 9;
     const completedAssignments = mockAssignments.filter(a => a.status === 'completed').length;
 
     const topicsProgress = Math.round((reviewedTopics / totalTopics) * 100);
@@ -419,7 +412,6 @@ const Schedule = () => {
 
   const progress = calculateProgress();
 
-  // Motivational messages based on progress
   const getMotivationalMessage = () => {
     if (progress.overall >= 80) {
       return { message: "Amazing work, Diya! You're crushing it! 🌟", color: "text-green-600" };
@@ -441,9 +433,7 @@ const Schedule = () => {
     'July', 'August', 'September', 'October', 'November', 'December'
   ];
 
-  // Helpers
   const handleLogout = async () => {
-    // Client-side logout only for UI demo
     router.push('/');
   };
 
@@ -454,7 +444,7 @@ const Schedule = () => {
 
   const getQuestionsForModule = (moduleNumber: string): Question[] => {
     const moduleNum = moduleNumber.split(' ')[1];
-    return questions.filter(question => question.module_no.toString() === moduleNum); // Ensure string/number comparison matches
+    return questions.filter(question => question.module_no.toString() === moduleNum);
   };
 
   const getFlashcardsForModule = (moduleNumber: string): Flashcard[] => {
@@ -500,7 +490,6 @@ const Schedule = () => {
     const firstDay = new Date(year, currentMonth, 1);
     const daysInMonth = new Date(year, currentMonth + 1, 0).getDate();
 
-    // Get day of week in IST (approx) or local
     const istFirstDay = new Date(firstDay.getTime() + (5.5 * 60 * 60 * 1000));
     const adjustedFirstDay = istFirstDay.getDay() === 0 ? 6 : istFirstDay.getDay() - 1;
 
@@ -549,9 +538,34 @@ const Schedule = () => {
   };
 
   return (
-    <div className="flex h-minscreen bg-[#125774]">
-      {/* Sidebar */}
-      <div className="w-64 bg-white shadow-lg flex flex-col">
+    <div className="flex h-screen bg-[#125774] overflow-hidden flex-col md:flex-row">
+      <div className="md:hidden bg-[#125774] p-4 flex items-center justify-between border-b border-white/10 z-20">
+        <div className="flex items-center gap-2">
+          <Book className="h-6 w-6 text-white" />
+          <div className="font-josefinSans text-xl font-bold text-white">
+            EDU<span className="text-[#ff8c5a]">QUEST</span>
+          </div>
+        </div>
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-30 md:hidden backdrop-blur-sm"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
+      <div className={`
+        fixed md:static inset-y-0 left-0 z-40 w-64 bg-white shadow-xl md:shadow-lg flex flex-col h-full
+        transform transition-transform duration-300 ease-in-out
+        ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+      `}>
         <div className="p-4" style={{ background: primaryColor }}>
           <div className="flex items-center gap-2 mb-8">
             <Book className="h-6 w-6 text-gray-800" />
@@ -561,10 +575,8 @@ const Schedule = () => {
             </div>
           </div>
 
-          {/* Profile Section */}
           <div className="mb-8 text-center">
             <div className="mx-auto mb-3 rounded-full overflow-hidden w-24 h-24 bg-gray-300">
-              {/* Use placeholder if image is missing */}
               <img
                 src="/assets/pfp.png"
                 alt="Profile"
@@ -586,7 +598,6 @@ const Schedule = () => {
           </div>
         </div>
 
-        {/* Navigation */}
         <nav className="flex-1 space-y-2 mt-10 p-4">
           <div className="relative">
             <button
@@ -647,7 +658,6 @@ const Schedule = () => {
             <span>Resources</span>
           </button>
 
-          {/* My Progress Section */}
           <div className="mt-4">
             <button
               onClick={() => setIsProgressOpen(!isProgressOpen)}
@@ -662,7 +672,6 @@ const Schedule = () => {
 
             {isProgressOpen && (
               <div className="mt-3 px-2">
-                {/* Motivational Message */}
                 <div className="mb-4 p-3 rounded-lg bg-gradient-to-r from-orange-50 to-blue-50 border-l-4" style={{ borderColor: primaryColor }}>
                   <div className="flex items-center gap-2 mb-2">
                     <Zap className="h-4 w-4" style={{ color: primaryColor }} />
@@ -673,7 +682,6 @@ const Schedule = () => {
                   </p>
                 </div>
 
-                {/* Overall Progress */}
                 <div className="mb-4 p-3 rounded-lg bg-gray-50">
                   <div className="flex items-center justify-between mb-2">
                     <span className="font-josefinSans text-xs font-semibold text-gray-700">Overall</span>
@@ -690,9 +698,7 @@ const Schedule = () => {
                   </div>
                 </div>
 
-                {/* Detailed Progress */}
                 <div className="space-y-3">
-                  {/* Topics */}
                   <div>
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-josefinSans text-xs text-gray-600">Topics Covered</span>
@@ -706,7 +712,6 @@ const Schedule = () => {
                     </div>
                   </div>
 
-                  {/* Questions */}
                   <div>
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-josefinSans text-xs text-gray-600">Questions Solved</span>
@@ -720,7 +725,6 @@ const Schedule = () => {
                     </div>
                   </div>
 
-                  {/* Flashcards */}
                   <div>
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-josefinSans text-xs text-gray-600">Flashcards Reviewed</span>
@@ -734,7 +738,6 @@ const Schedule = () => {
                     </div>
                   </div>
 
-                  {/* Assignments */}
                   <div>
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-josefinSans text-xs text-gray-600">Assignments Done</span>
@@ -749,7 +752,6 @@ const Schedule = () => {
                   </div>
                 </div>
 
-                {/* Target Goal */}
                 <div className="mt-4 p-3 rounded-lg border-2 border-dashed" style={{ borderColor: primaryColor }}>
                   <div className="flex items-center gap-2 mb-1">
                     <Target className="h-4 w-4" style={{ color: primaryColor }} />
@@ -783,16 +785,16 @@ const Schedule = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 p-8 bg-[#125774]">
+      <div className="flex-1 p-4 md:p-8 bg-[#125774] overflow-y-auto w-full">
         {selectedSubject ? (
           <div>
-            <header className="flex justify-between items-center mb-8">
-              <h1 className="font-noto text-2xl font-semibold text-white">
+            <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+              <h1 className="font-noto text-xl md:text-2xl font-semibold text-white leading-tight">
                 {selectedSubject.subject_name.toUpperCase()} - OVERVIEW 📚
               </h1>
               <button
                 onClick={() => setIsScheduleModalOpen(true)}
-                className="font-noto px-4 py-2 rounded-lg text-white"
+                className="font-noto px-4 py-2 rounded-lg text-white w-full md:w-auto text-sm md:text-base"
                 style={{ backgroundColor: "rgba(255, 140, 90, 1)" }}
               >
                 Create/View schedule
@@ -807,7 +809,7 @@ const Schedule = () => {
                   <h2 className="font-noto text-lg font-semibold text-gray-800">📚 IMPORTANT TOPICS</h2>
                   <ChevronRight className="h-5 w-5 text-gray-400" />
                 </div>
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {['Module 1', 'Module 2', 'Module 3', 'Module 4', 'Module 5'].map((module) => {
                     const moduleTopics = getTopicsForModule(module);
                     return (
@@ -834,7 +836,7 @@ const Schedule = () => {
                   <h2 className="font-noto text-lg font-semibold text-gray-800">❓ REPEATED PREVIOUS YEAR QUESTIONS</h2>
                   <ChevronRight className="h-5 w-5 text-gray-400" />
                 </div>
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {['Module 1', 'Module 2', 'Module 3', 'Module 4', 'Module 5'].map((module) => {
                     const moduleQuestions = getQuestionsForModule(module);
                     return (
@@ -861,7 +863,7 @@ const Schedule = () => {
                   <h2 className="font-noto text-lg font-semibold text-gray-800">📝 FLASHCARDS</h2>
                   <ChevronRight className="h-5 w-5 text-gray-400" />
                 </div>
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {['Module 1', 'Module 2', 'Module 3', 'Module 4', 'Module 5'].map((module) => {
                     const moduleFlashcards = getFlashcardsForModule(module);
                     return (
@@ -883,9 +885,9 @@ const Schedule = () => {
               </div>
 
               {/* Calendar and Assignments Grid */}
-              <div className="grid grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Calendar */}
-                <div className="col-span-2 bg-white p-6 rounded-xl shadow-sm max-h-[400px]">
+                <div className="col-span-1 lg:col-span-2 bg-white p-6 rounded-xl shadow-sm max-h-[400px]">
                   <div className="flex justify-between items-center mb-4">
                     <button onClick={handlePreviousMonth} className="text-gray-600 font-semibold hover:text-gray-800">
                       &lt;

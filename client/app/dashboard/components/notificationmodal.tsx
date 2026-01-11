@@ -23,31 +23,29 @@ const getNotificationColor = (daysLeft: number) => {
   return { bg: 'bg-green-50', border: 'border-green-300', text: 'text-green-800' };
 };
 
-const NotificationsModal: React.FC<NotificationsModalProps> = ({ 
-  isOpen, 
-  onClose, 
-  notifications 
+const NotificationsModal: React.FC<NotificationsModalProps> = ({
+  isOpen,
+  onClose,
+  notifications
 }) => {
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-[2px] p-4">
       <div className="bg-white rounded-xl shadow-2xl w-[500px] max-h-[600px] overflow-hidden">
-        {/* Header */}
         <div className="bg-[rgba(255,140,90,1)] text-white p-6 flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <Bell className="h-8 w-8" />
             <h2 className="font-noto text-2xl font-bold">NOTIFICATIONS</h2>
           </div>
-          <button 
-            onClick={onClose} 
+          <button
+            onClick={onClose}
             className="hover:bg-white/20 rounded-full p-2 transition-colors"
           >
             <X className="h-6 w-6" />
           </button>
         </div>
 
-        {/* Notifications List */}
         <div className="overflow-y-auto max-h-[450px] p-4">
           {notifications.length === 0 ? (
             <div className="text-center text-gray-500 py-10">
@@ -58,8 +56,8 @@ const NotificationsModal: React.FC<NotificationsModalProps> = ({
             notifications.map(notification => {
               const colorScheme = getNotificationColor(notification.daysLeft);
               return (
-                <div 
-                  key={notification.id} 
+                <div
+                  key={notification.id}
                   className={`
                     ${colorScheme.bg} ${colorScheme.border} ${colorScheme.text}
                     border rounded-lg p-4 mb-4 shadow-sm
@@ -69,8 +67,8 @@ const NotificationsModal: React.FC<NotificationsModalProps> = ({
                   <div className="font-noto flex justify-between items-center mb-2">
                     <h3 className="font-bold text-lg">{notification.title}</h3>
                     <span className="text-sm font-medium">
-                      {notification.daysLeft === 0 
-                        ? 'Today' 
+                      {notification.daysLeft === 0
+                        ? 'Today'
                         : `In ${notification.daysLeft} day${notification.daysLeft !== 1 ? 's' : ''}`}
                     </span>
                   </div>

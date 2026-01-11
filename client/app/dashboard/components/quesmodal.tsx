@@ -69,15 +69,14 @@ const QuestionAnswerModal: React.FC<QuestionAnswerModalProps> = ({
           </div>
 
           <div className="flex gap-6 h-[600px]">
-            {/* Questions List */}
             <div className="w-1/2 space-y-3 overflow-y-auto pr-4">
               {questions.length > 0 ? (
                 questions.map((question) => (
                   <button
                     key={question.id}
                     className={`w-full p-4 text-left rounded-lg transition-all transform hover:scale-102 hover:shadow-md flex justify-between items-center ${selectedQuestion?.id === question.id
-                        ? 'bg-blue-100 border-2 border-blue-300'
-                        : 'bg-white border border-gray-200 hover:bg-blue-50'
+                      ? 'bg-blue-100 border-2 border-blue-300'
+                      : 'bg-white border border-gray-200 hover:bg-blue-50'
                       }`}
                     onClick={() => setSelectedQuestion(question)}
                   >
@@ -94,7 +93,6 @@ const QuestionAnswerModal: React.FC<QuestionAnswerModalProps> = ({
               )}
             </div>
 
-            {/* Answer Panel */}
             {selectedQuestion ? (
               <div className="w-1/2 bg-white rounded-lg p-6 overflow-y-auto border border-gray-200">
                 <div className="space-y-4">

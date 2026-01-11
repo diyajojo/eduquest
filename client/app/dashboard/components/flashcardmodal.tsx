@@ -25,9 +25,8 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
 
-  // Theme colors from the site
-  const primaryColor = "rgba(255, 140, 90, 1)"; // Orange
-  const backgroundColor = "rgba(18, 87, 116, 1)"; // Blue
+  const primaryColor = "rgba(255, 140, 90, 1)";
+  const backgroundColor = "rgba(18, 87, 116, 1)";
 
   if (!isOpen) return null;
 
@@ -51,13 +50,13 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
   );
 
   const handlePrevCard = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent card flip when clicking navigation
+    e.stopPropagation();
     setCurrentCardIndex((prev) => (prev === 0 ? flashcards.length - 1 : prev - 1));
     setIsFlipped(false);
   };
 
   const handleNextCard = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent card flip when clicking navigation
+    e.stopPropagation();
     setCurrentCardIndex((prev) => (prev === flashcards.length - 1 ? 0 : prev + 1));
     setIsFlipped(false);
   };
@@ -66,7 +65,6 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
     setIsFlipped(!isFlipped);
   };
 
-  // Handle clicking outside to close
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose();
@@ -93,7 +91,7 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
 
         {flashcards.length > 0 ? (
           <div className="space-y-6">
-            {/* Card Container */}
+
             <div className="relative w-full h-[450px]">
               <div
                 className="w-full h-full transition-all duration-500 cursor-pointer [transform-style:preserve-3d]"
@@ -102,7 +100,7 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
                 }}
                 onClick={handleFlip}
               >
-                {/* Front of Card (Question) */}
+
                 <div
                   className="absolute inset-0 bg-white rounded-2xl p-10 flex flex-col items-center justify-center [backface-visibility:hidden]  border-4"
 
@@ -125,7 +123,6 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
                   </div>
                 </div>
 
-                {/* Back of Card (Answer) */}
                 <div
                   className="absolute inset-0 bg-white rounded-2xl p-10 flex flex-col items-center justify-center [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-2xl border-4"
 
@@ -150,7 +147,7 @@ const FlashcardModal: React.FC<FlashcardModalProps> = ({
               </div>
             </div>
 
-            {/* Navigation Controls */}
+
             <div className="flex items-center justify-between px-4">
               <button
                 onClick={handlePrevCard}

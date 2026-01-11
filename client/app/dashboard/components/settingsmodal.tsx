@@ -34,7 +34,6 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, profile 
         className="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[600px] overflow-hidden flex flex-col md:flex-row"
         onClick={e => e.stopPropagation()}
       >
-        {/* Sidebar */}
         <div className="w-full md:w-64 bg-gray-50 border-r border-gray-100 p-6">
           <h2 className="font-noto text-xl font-bold text-gray-800 mb-6">Settings</h2>
           <nav className="space-y-2">
@@ -45,8 +44,8 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, profile 
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors ${activeTab === tab.id
-                      ? 'bg-blue-100 text-blue-700 font-semibold'
-                      : 'text-gray-600 hover:bg-gray-100'
+                    ? 'bg-blue-100 text-blue-700 font-semibold'
+                    : 'text-gray-600 hover:bg-gray-100'
                     }`}
                 >
                   <Icon className="h-5 w-5" />
@@ -57,9 +56,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, profile 
           </nav>
         </div>
 
-        {/* Content Area */}
         <div className="flex-1 flex flex-col">
-          {/* Header */}
           <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-white sticky top-0 z-10">
             <h3 className="font-noto text-xl font-semibold text-gray-800">
               {tabs.find(t => t.id === activeTab)?.label}
@@ -72,7 +69,6 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, profile 
             </button>
           </div>
 
-          {/* Scrollable Content */}
           <div className="flex-1 overflow-y-auto p-8">
             {activeTab === 'profile' && (
               <div className="space-y-6 max-w-lg">
@@ -152,7 +148,6 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, profile 
 
             {activeTab === 'preferences' && (
               <div className="space-y-8 max-w-lg">
-                {/* Appearance */}
                 <div>
                   <h4 className="font-semibold text-gray-800 mb-4 flex items-center gap-2">
                     <Sun className="h-5 w-5 text-orange-500" />
@@ -174,7 +169,6 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, profile 
                   </div>
                 </div>
 
-                {/* Notifications */}
                 <div>
                   <h4 className="font-semibold text-gray-800 mb-4 flex items-center gap-2">
                     <Bell className="h-5 w-5 text-blue-500" />

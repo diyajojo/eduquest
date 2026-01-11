@@ -4,7 +4,6 @@ import { Alert, AlertDescription } from '../../components/ui/alert';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
 import { Button } from '../../components/ui/button';
 
-// Define interfaces for our data structures
 interface ScheduleActivity {
   time: string;
   topic: string;
@@ -41,7 +40,6 @@ interface ScheduleModalProps {
   flashcards: Array<{ id: string; question_text: string; answer_text: string; subject_id: string; module_no: number }>;
 }
 
-// Hardcoded mock data
 const mockExistingSchedule: ScheduleResponse = {
   schedule: [
     {
@@ -129,9 +127,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
   const [hasExistingSchedule, setHasExistingSchedule] = useState(true); // Changed to true for demo
   const [existingScheduleData, setExistingScheduleData] = useState<ScheduleResponse | null>(mockExistingSchedule);
 
-  // No need to check for existing schedule - using hardcoded data
   useEffect(() => {
-    // Hardcoded data is already set in state initialization
   }, [isOpen, subjectId]);
 
   const generateSchedule = async () => {
@@ -139,10 +135,8 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
     setError(null);
 
     try {
-      // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1500));
 
-      // Use hardcoded generated schedule
       const generatedSchedule: ScheduleResponse = {
         schedule: [
           {
@@ -235,10 +229,8 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
     if (!scheduleData) return;
 
     try {
-      // Simulate saving delay
       await new Promise(resolve => setTimeout(resolve, 500));
 
-      // Show success message and close modal (no actual database save)
       setSaved(true);
       setTimeout(onClose, 1500);
     } catch (err) {
@@ -248,7 +240,6 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
     }
   };
 
-  // Render methods remain the same as in the original implementation
   const renderScheduleContent = (data: ScheduleResponse) => (
     <div className="space-y-4">
       {data.schedule.map((day, index) => (
@@ -335,7 +326,6 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
             </Alert>
           )}
 
-          {/* Show different content based on whether schedule exists */}
           {hasExistingSchedule ? (
             <div className="space-y-6">
               <div className="bg-blue-50 rounded-lg p-4 mb-6">
@@ -367,7 +357,6 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
               </Tabs>
             </div>
           ) : (
-            // Original content for generating new schedule
             <>
               {!scheduleData && !loading && (
                 <div className="text-center py-12 bg-gray-50 rounded-lg border-2 border-dashed border-gray-200">

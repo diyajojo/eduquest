@@ -1,4 +1,3 @@
-// app/components/featurecard.tsx
 import { FC } from 'react';
 
 interface Feature {

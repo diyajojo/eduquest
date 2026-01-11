@@ -67,7 +67,6 @@ const ResourcesModal: React.FC<ResourcesModalProps> = ({ isOpen, onClose }) => {
         className="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[600px] overflow-hidden flex flex-col"
         onClick={e => e.stopPropagation()}
       >
-        {/* Header */}
         <div className="bg-[#125774] text-white p-6 flex justify-between items-center">
           <div className="flex items-center space-x-3">
             <Library className="h-8 w-8" />
@@ -84,7 +83,6 @@ const ResourcesModal: React.FC<ResourcesModalProps> = ({ isOpen, onClose }) => {
           </button>
         </div>
 
-        {/* Content */}
         <div className="overflow-y-auto p-6 flex-1 bg-gray-50">
           <div className="grid gap-4">
             {resources.map((book) => (
@@ -92,12 +90,10 @@ const ResourcesModal: React.FC<ResourcesModalProps> = ({ isOpen, onClose }) => {
                 key={book.id}
                 className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex gap-4 transition-transform hover:scale-[1.01] hover:shadow-md"
               >
-                {/* Book Cover Icon */}
                 <div className={`${book.coverColor} w-16 h-20 rounded shadow-md flex-shrink-0 flex items-center justify-center text-white`}>
                   <Book className="h-8 w-8 opacity-80" />
                 </div>
 
-                {/* Book Details */}
                 <div className="flex-1 min-w-0">
                   <div className="flex justify-between items-start">
                     <h3 className="font-noto font-bold text-gray-800 text-lg leading-tight mb-1 truncate pr-2">
@@ -124,7 +120,6 @@ const ResourcesModal: React.FC<ResourcesModalProps> = ({ isOpen, onClose }) => {
           </div>
         </div>
 
-        {/* Footer */}
         <div className="p-4 bg-white border-t border-gray-100 text-center">
           <p className="text-xs text-gray-400">
             These resources are curated based on your current semester curriculum.
