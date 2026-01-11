@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Book, Bell, ChevronDown, LogOut, ChevronRight, AlertTriangle } from 'lucide-react';
+import { Book, Bell, ChevronDown, LogOut, ChevronRight, AlertTriangle, TrendingUp, Target, Zap } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import EmptyState from './components/emptystate';
 import ModuleTopicsModal from './components/topicmodal';
@@ -381,6 +381,55 @@ const Schedule = () => {
   // Important dates to mark in red (assignments, exams, deadlines)
   const importantDates = [15, 18, 22, 25, 28]; // Days of the month to mark in red
 
+  // Progress tracking
+  const [isProgressOpen, setIsProgressOpen] = useState(false);
+
+  // Calculate progress for each subject
+  const calculateProgress = () => {
+    const totalTopics = mockTopics.length;
+    const totalQuestions = mockQuestions.length;
+    const totalFlashcards = mockFlashcards.length;
+    const totalAssignments = mockAssignments.length;
+
+    // Simulate reviewed/completed items (you can make this dynamic later)
+    const reviewedTopics = 12; // out of 24
+    const answeredQuestions = 7; // out of 15
+    const reviewedFlashcards = 9; // out of 15
+    const completedAssignments = mockAssignments.filter(a => a.status === 'completed').length;
+
+    const topicsProgress = Math.round((reviewedTopics / totalTopics) * 100);
+    const questionsProgress = Math.round((answeredQuestions / totalQuestions) * 100);
+    const flashcardsProgress = Math.round((reviewedFlashcards / totalFlashcards) * 100);
+    const assignmentsProgress = Math.round((completedAssignments / totalAssignments) * 100);
+
+    const overallProgress = Math.round((topicsProgress + questionsProgress + flashcardsProgress + assignmentsProgress) / 4);
+
+    return {
+      overall: overallProgress,
+      topics: topicsProgress,
+      questions: questionsProgress,
+      flashcards: flashcardsProgress,
+      assignments: assignmentsProgress
+    };
+  };
+
+  const progress = calculateProgress();
+
+  // Motivational messages based on progress
+  const getMotivationalMessage = () => {
+    if (progress.overall >= 80) {
+      return { message: "Amazing work, Diya! You're crushing it! 🌟", color: "text-green-600" };
+    } else if (progress.overall >= 60) {
+      return { message: "Great progress, Diya! Keep it up! 💪", color: "text-blue-600" };
+    } else if (progress.overall >= 40) {
+      return { message: "You're getting there, Diya! Stay focused! 🎯", color: "text-yellow-600" };
+    } else {
+      return { message: "Come on Diya, you got this! Let's push harder! 🚀", color: "text-orange-600" };
+    }
+  };
+
+  const motivationalMsg = getMotivationalMessage();
+
   const primaryColor = "rgba(255, 140, 90, 1)";
   const backgroundColor = "rgba(18, 87, 116, 1)";
   const months = [
@@ -583,6 +632,120 @@ const Schedule = () => {
               </span>
             )}
           </button>
+
+          {/* My Progress Section */}
+          <div className="mt-4">
+            <button
+              onClick={() => setIsProgressOpen(!isProgressOpen)}
+              className="w-full flex items-center justify-between gap-3 px-4 py-2 text-left rounded-lg text-gray-700 hover:bg-gray-50"
+            >
+              <div className="flex items-center gap-3">
+                <TrendingUp className="h-5 w-5" />
+                <span>My Progress</span>
+              </div>
+              <ChevronDown className={`h-4 w-4 transform transition-transform ${isProgressOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            {isProgressOpen && (
+              <div className="mt-3 px-2">
+                {/* Motivational Message */}
+                <div className="mb-4 p-3 rounded-lg bg-gradient-to-r from-orange-50 to-blue-50 border-l-4" style={{ borderColor: primaryColor }}>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Zap className="h-4 w-4" style={{ color: primaryColor }} />
+                    <p className="font-josefinSans text-xs font-bold text-gray-700">MOTIVATION</p>
+                  </div>
+                  <p className={`font-josefinSans text-sm font-semibold ${motivationalMsg.color}`}>
+                    {motivationalMsg.message}
+                  </p>
+                </div>
+
+                {/* Overall Progress */}
+                <div className="mb-4 p-3 rounded-lg bg-gray-50">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-josefinSans text-xs font-semibold text-gray-700">Overall</span>
+                    <span className="font-josefinSans text-xs font-bold" style={{ color: backgroundColor }}>{progress.overall}%</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div
+                      className="h-2 rounded-full transition-all"
+                      style={{
+                        width: `${progress.overall}%`,
+                        background: `linear-gradient(to right, ${primaryColor}, ${backgroundColor})`
+                      }}
+                    />
+                  </div>
+                </div>
+
+                {/* Detailed Progress */}
+                <div className="space-y-3">
+                  {/* Topics */}
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-josefinSans text-xs text-gray-600">Topics Covered</span>
+                      <span className="font-josefinSans text-xs font-semibold text-gray-700">{progress.topics}%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-1.5">
+                      <div
+                        className="h-1.5 rounded-full"
+                        style={{ width: `${progress.topics}%`, backgroundColor: backgroundColor }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Questions */}
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-josefinSans text-xs text-gray-600">Questions Solved</span>
+                      <span className="font-josefinSans text-xs font-semibold text-gray-700">{progress.questions}%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-1.5">
+                      <div
+                        className="h-1.5 rounded-full"
+                        style={{ width: `${progress.questions}%`, backgroundColor: primaryColor }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Flashcards */}
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-josefinSans text-xs text-gray-600">Flashcards Reviewed</span>
+                      <span className="font-josefinSans text-xs font-semibold text-gray-700">{progress.flashcards}%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-1.5">
+                      <div
+                        className="h-1.5 rounded-full"
+                        style={{ width: `${progress.flashcards}%`, backgroundColor: '#10b981' }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Assignments */}
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-josefinSans text-xs text-gray-600">Assignments Done</span>
+                      <span className="font-josefinSans text-xs font-semibold text-gray-700">{progress.assignments}%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-1.5">
+                      <div
+                        className="h-1.5 rounded-full"
+                        style={{ width: `${progress.assignments}%`, backgroundColor: '#8b5cf6' }}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Target Goal */}
+                <div className="mt-4 p-3 rounded-lg border-2 border-dashed" style={{ borderColor: primaryColor }}>
+                  <div className="flex items-center gap-2 mb-1">
+                    <Target className="h-4 w-4" style={{ color: primaryColor }} />
+                    <span className="font-josefinSans text-xs font-bold text-gray-700">WEEKLY TARGET</span>
+                  </div>
+                  <p className="font-josefinSans text-xs text-gray-600">Complete 3 more modules to reach 75%</p>
+                </div>
+              </div>
+            )}
+          </div>
 
         </nav>
 
