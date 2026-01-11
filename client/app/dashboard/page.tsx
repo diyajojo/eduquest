@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { Book, Bell, ChevronDown, LogOut, ChevronRight, AlertTriangle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import EmptyState from './components/emptystate';
-import ModuleTopicsModal from './components/topicsmodal';
+import ModuleTopicsModal from './components/topicmodal';
 import QuestionAnswerModal from './components/quesmodal';
 import FlashcardModal from './components/flashcardmodal';
 import ScheduleModal from './components/schedulemodal';
-import AssignmentCard from './components/assignmentcard';
-import NotificationsModal from './components/notificationsmodal';
+import AssignmentCard from './components/assigmentcard';
+import NotificationsModal from './components/notificationmodal';
 
 // Interfaces
 interface Profile {
@@ -107,8 +107,9 @@ const Schedule = () => {
   ];
 
   const mockFlashcards: Flashcard[] = [
-    { id: '1', question_text: 'Primary Key', answer_text: 'Unique identifier for a record.', subject_id: '1', module_no: 2 },
-    { id: '2', question_text: 'Foreign Key', answer_text: 'Field that refers to the primary key in another table.', subject_id: '1', module_no: 2 },
+    { id: '1', question_text: 'What is a Primary Key?', answer_text: 'Unique identifier for a record.', subject_id: '1', module_no: 2 },
+    { id: '2', question_text: 'What is normalization in databases?', answer_text: 'Process of organizing data to reduce redundancy.', subject_id: '1', module_no: 2 },
+    
   ];
 
   const mockAssignments: Assignment[] = [
@@ -119,6 +120,7 @@ const Schedule = () => {
   const mockNotifications: Notification[] = [
     { id: '1', title: 'DBMS Assignment Due', description: 'Submit by Friday', date: new Date().toISOString(), daysLeft: 2, type: 'assignment' },
     { id: '2', title: 'OS Quiz', description: 'Module 1 and 2', date: new Date(Date.now() + 172800000).toISOString(), daysLeft: 2, type: 'schedule' },
+      { id: '3', title: 'CN Tutorial', description: 'Module 1 and 2', date: new Date(Date.now() + 172800000).toISOString(), daysLeft: 2, type: 'schedule' }
   ];
 
   // State
@@ -260,8 +262,8 @@ const Schedule = () => {
           <div className="flex items-center gap-2 mb-8">
             <Book className="h-6 w-6 text-gray-800" />
             <div className="font-josefinSans text-2xl font-bold">
-              <span >Study</span>
-              <span style={{ color: backgroundColor }}>GPT</span>
+              <span>EDU</span>
+              <span style={{ color: backgroundColor }}>QUEST</span>
             </div>
           </div>
 
